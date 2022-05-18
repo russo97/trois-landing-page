@@ -1,0 +1,11 @@
+
+:root {
+  // colors
+  --gray1: #EAE9EF;
+
+  --black: #000;
+
+  // sizes
+  --distance-between-header-and-bottomscreen: 45px;
+  --header-height: min(calc(100vh - var(--distance-between-header-and-bottomscreen)), 892px);
+}

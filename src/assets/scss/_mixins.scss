@@ -1,0 +1,28 @@
+
+@mixin contentLimit ($maximum: 1180px) {
+  --yPadding: 0;
+  --xPadding: 12px;
+
+  padding: var(--yPadding) 0;
+  margin: 0 auto;
+  max-width: $maximum;
+
+  @media (max-width: calc(#{$maximum} + (12px * 2) - 1px)) {
+    padding: var(--yPadding) var(--xPadding);
+
+    @content;
+  }
+}
+
+@mixin sizedBox ($width: 10px, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin limitTextLines ($lines: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}

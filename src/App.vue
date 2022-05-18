@@ -1,20 +1,39 @@
 <template>
   <div id="app">
-    I'm built with {{ tool }}
+    <Header />
   </div>
 </template>
 
 <script>
+  import Header from "./components/Header";
   export default {
     name: 'App',
 
-    data () {
-      return {
-        tool: 'VueJS'
-      }
+    components: {
+      Header
     }
   }
 </script>
 
-<style>
+<style lang="scss">
+  @import "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css";
+
+  * {
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    outline: 0 none;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    height: 100%;
+    position: relative;
+  }
+
+  .wrapper {
+    @include contentLimit();
+  }
 </style>
