@@ -1,16 +1,21 @@
 <template>
   <div id="app">
     <Header />
+
+    <MainForm />
   </div>
 </template>
 
 <script>
   import Header from "./components/Header";
+  import MainForm from "./components/MainForm";
+
   export default {
     name: 'App',
 
     components: {
-      Header
+      Header,
+      MainForm
     }
   }
 </script>
