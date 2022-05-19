@@ -11,18 +11,24 @@
         Cadastre-se e <br class="d-md-none">entre para nossa <strong>Lista VIP</strong>
       </h1>
 
-      <div class="header__models d-flex align-items-end justify-content-center">
-        <picture class="m-0">
+      <div class="header__models d-flex justify-content-center">
+        <picture class="d-flex align-items-end justify-content-center m-0">
           <source srcset="../assets/images/modelos-desktop.jpg" media="(min-width: 540px)">
-          <img src="../assets/images/modelos-mobile.jpg" alt="" />
+          <img src="../assets/images/modelos-mobile.jpg" alt="Modelos" />
         </picture>
       </div>
 
-      <a href="#" role="button" class="d-none">
+      <a href="#" role="button" class="header__arrow d-block position-absolute">
         <figure>
           <img src="../assets/images/arrow-down.svg" alt="">
         </figure>
       </a>
+
+      <div class="header__wave position-absolute bottom-0 start-50 justify-content-center">
+        <figure class="m-0 h-100 d-flex align-items-end justify-content-center">
+          <img src="../assets/images/header-wave-mobile.svg" alt="wave" class="h-100" />
+        </figure>
+      </div>
     </div>
   </header>
 </template>
@@ -35,12 +41,12 @@
 
 <style lang="scss">
   .header {
+    position: relative;
     background-color: var(--gray1);
 
     &__wrapper {
       overflow: hidden;
       height: var(--header-height);
-      //background: transparent url('../assets/images/Untitled-1.jpg') center bottom / cover no-repeat;
 
       &:after,
       &:before {
@@ -55,7 +61,7 @@
 
       &:after {
         right: 0;
-        transform: translate(99px, 0) rotateX(180deg);
+        transform: translate(99px, 0) rotateY(180deg);
       }
 
       &:before {
@@ -71,13 +77,15 @@
     }
 
     &__models {
+      width: 100%;
       flex-grow: 1;
 
       picture {
         height: 100%;
 
         img {
-          height: 100%;
+          width: 100%;
+          max-width: 1094px;
           object-fit: cover;
         }
       }
@@ -94,9 +102,75 @@
       }
     }
 
-    @media (min-width: 540px) {
+    &__wave {
+      transform: translateX(-50%);
+      @include sizedBox(375px, 64px);
+
+      figure {
+        &:after,
+        &:before {
+          --width: calc((100vw - 375px) / 2 + 2px);
+
+          content: '';
+          flex: 0 0 var(--width);
+
+          background: #f7f6fb;
+          transform: translate(var(--translateX, -10px));
+          @include sizedBox(var(--width), 100%);
+        }
+
+        &:before {
+          --translateX: 2px;
+        }
+
+        &:after {
+          --translateX: -2px;
+        }
+      }
+    }
+
+    &__arrow {
+      --size: 30px;
+
+      z-index: 2;
+      bottom: 21px;
+      left: calc(50% - (var(--size) / 2));
+
+      @include sizedBox(var(--size));
+      filter: drop-shadow(2px 2px 4px #000);
+    }
+
+    @media (min-width: 640px) {
       &__herotext {
         font: 300 2.4375rem / 3rem "Montserrat", sans-serif;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      &__wrapper {
+        overflow: hidden;
+        position: relative;
+        height: var(--header-height);
+
+        &:after,
+        &:before {
+          top: 50%;
+          @include sizedBox(1000px, 636px);
+          background: transparent url("../assets/images/item.svg") center / 100%  no-repeat;
+        }
+
+        &:after {
+          right: unset;
+          left: 100%;
+          transform: translate(-25vw, -50%) rotateY(180deg);
+        }
+
+        &:before {
+          left: unset;
+          right: 100%;
+          transform: translate(25vw, -50%);
+          background: transparent url("../assets/images/item.svg") center / 100%  no-repeat;
+        }
       }
     }
   }
