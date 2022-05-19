@@ -8,7 +8,7 @@ module.exports = {
     }
   },
 
-  publicPath: 'https://github.com/russo97/trois-landing-page/blob/master/dist',
+  publicPath: 'https://cdn.jsdelivr.net/gh/russo97/trois-landing-page@master/dist',
 
   filenameHashing: false
 }
