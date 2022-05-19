@@ -35,19 +35,7 @@
 
 <script>
   export default {
-    name: "Header",
-
-    data () {
-      return {
-        baseURL: ''
-      }
-    },
-
-    created () {
-      if (process.env.NODE_ENV === 'production') {
-        this.baseURL = 'https://github.com/russo97/trois-landing-page/blob/master/dist';
-      }
-    }
+    name: "Header"
   }
 </script>
 
