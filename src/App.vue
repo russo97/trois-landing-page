@@ -3,19 +3,23 @@
     <Header />
 
     <MainForm />
+
+    <OurServices />
   </div>
 </template>
 
 <script>
   import Header from "./components/Header";
   import MainForm from "./components/MainForm";
+  import OurServices from './components/OurServices'
 
   export default {
     name: 'App',
 
     components: {
       Header,
-      MainForm
+      MainForm,
+      OurServices
     }
   }
 </script>
