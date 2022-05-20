@@ -3,7 +3,7 @@
     <div class="mainform__wrapper">
 
       <div class="mainform__form w-100 mx-auto">
-        <form id="formLeadGenerator">
+        <form @submit.prevent="submitForm" id="formLeadGenerator" ref="form">
           <h3 class="mainform__title text-center">
             Faça seu cadastro gratuito
           </h3>
@@ -25,7 +25,7 @@
           </div>
 
           <div class="form-floating mb-3">
-            <input type="tel" inputmode="numeric" class="form-control" id="phone" placeholder="00 0000 0000" v-model="user.phone" required />
+            <input type="tel" inputmode="numeric" class="form-control" id="phone" placeholder="00 0000 0000" v-mask="'(##) ##### ####'" v-model="user.phone" required />
 
             <label for="phone">
               Celular
@@ -34,7 +34,7 @@
 
           <div class="d-flex justify-content-center">
             <button type="submit" id="queroMinhaVaga" class="d-flex align-items-center justify-content-center">
-              Quero garantir a minha vaga
+              {{ buttonText }}
             </button>
           </div>
         </form>
@@ -45,16 +45,84 @@
 </template>
 
 <script>
+  import Vue from 'vue';
+  import VueMask from 'v-mask';
+
+  Vue.use(VueMask);
+
   export default {
     name: "MainForm",
 
     data () {
       return {
+        success: false,
+        isLoading: false,
+
         user: {
           name: '',
           email: '',
           phone: ''
         }
+      }
+    },
+
+    computed: {
+      buttonText () {
+        return this.success ? "ENVIADO" : "Quero garantir a minha vaga";
+      }
+    },
+
+    methods: {
+      submitForm () {
+        this.isLoading = true;
+
+        const { nome, email, phone } = this.user;
+
+        const formData = {
+          nome,
+          email,
+          telefone: phone,
+          page_url: location.href,
+          token_rdstation: 'a64adbfcc800c08ac5a649ece7d19fbe',
+          identificador: 'ZONA_NORTE_INAUGURACAO',
+          traffic_source: this.lerCookie('__trf.src')
+        };
+
+        this.sendData(formData);
+      },
+
+      sendData (data) {
+        fetch('https://www.rdstation.com.br/api/1.3/conversions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(() => {
+          this.success = true;
+        })
+        .finally(() => {
+          this.isLoading = false;
+
+          this.clearInputs();
+        }).catch((e) => {
+          console.error('we got an error:', e.message)
+        });
+      },
+
+      lerCookie (name) {
+        const value = '; ' + document.cookie;
+        const parts = value.split('; ' + name + '=');
+
+        if (parts.length === 2) {
+          return parts.pop().split(';').shift();
+        }
+      },
+
+      clearInputs () {
+        this.$refs.form.reset();
       }
     }
   }
