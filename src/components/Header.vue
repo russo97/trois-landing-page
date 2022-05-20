@@ -18,7 +18,7 @@
         </picture>
       </div>
 
-      <a href="#" role="button" class="header__arrow d-block position-absolute">
+      <a @click.prevent="mainFormFocus" href="javascript:;" role="button" class="header__arrow d-block position-absolute">
         <figure>
           <img src="../assets/images/arrow-down.svg" alt="">
         </figure>
@@ -34,8 +34,24 @@
 </template>
 
 <script>
+  import $ from 'jquery';
+
   export default {
-    name: "Header"
+    name: "Header",
+
+    methods: {
+      mainFormFocus () {
+        const mainFormElement = $('#formLeadGenerator');
+
+        if (!mainFormElement.length) return;
+
+        $('html, body').animate({
+          scrollTop: mainFormElement.offset().top - $(window).height() * .25
+        }, 1200, 'swing', function () {
+          mainFormElement.find('input[id="nome"]').focus()
+        });
+      }
+    }
   }
 </script>
 

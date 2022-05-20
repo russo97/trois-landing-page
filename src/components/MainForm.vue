@@ -3,7 +3,7 @@
     <div class="mainform__wrapper">
 
       <div class="mainform__form w-100 mx-auto">
-        <form>
+        <form id="formLeadGenerator">
           <h3 class="mainform__title text-center">
             Faça seu cadastro gratuito
           </h3>
