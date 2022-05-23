@@ -7,10 +7,10 @@
   margin: 0 auto;
   max-width: $maximum;
 
+  @content;
+
   @media (max-width: calc(#{$maximum} + (12px * 2) - 1px)) {
     padding: var(--yPadding) var(--xPadding);
-
-    @content;
   }
 }
 
