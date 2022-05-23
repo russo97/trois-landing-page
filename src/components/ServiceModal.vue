@@ -163,10 +163,6 @@
       padding: 14px 21px;
     }
 
-    &__image {
-      width: 151px;
-    }
-
     &__name {
       --fs: 1rem;
       --lh: .875rem;
