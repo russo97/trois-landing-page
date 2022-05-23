@@ -10,7 +10,5 @@ module.exports = {
 
   publicPath: process.env.NODE_ENV === "production"
     ? 'https://cdn.jsdelivr.net/gh/russo97/trois-landing-page@master/dist'
-    : '/',
-
-  filenameHashing: false
+    : '/'
 }
