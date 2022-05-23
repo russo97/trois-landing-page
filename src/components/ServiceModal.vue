@@ -76,9 +76,9 @@
         } = this.currentService;
 
         await navigator.share({
-          url: `${location.origin}?sI=${this.selectedService}`,
           text: serviceDescription,
-          title: `${serviceName} na Trois Beauté`
+          title: `${serviceName} na Trois Beauté`,
+          url: `${location.origin}${location.pathname}?sI=${this.selectedService}`,
         });
       },
 
