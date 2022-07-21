@@ -8,8 +8,12 @@
       </a>
 
       <h1 class="header__herotext text-center">
-        Cadastre-se e <br class="d-md-none">entre para nossa <strong>Lista VIP</strong>
+        O <strong>maior e melhor</strong> salão da cidade, agora na Zona Norte!
       </h1>
+
+      <h2 class="header__subtitle text-center">
+        Cadastre-se e entre para nossa <strong>Lista VIP</strong> para receber benefícios exclusivos.
+      </h2>
 
       <div class="header__models d-flex justify-content-center">
         <picture class="d-flex align-items-end justify-content-center m-0">
@@ -107,11 +111,27 @@
       }
     }
 
+    &__herotext,
+    &__subtitle {
+      max-width: 760px;
+    }
+
     &__herotext {
       margin: 1.5rem auto 0;
 
       color: var(--black);
       font: 300 1.5rem / 1.8125rem "Montserrat", sans-serif;
+
+      strong {
+        font-weight: 600;
+      }
+    }
+
+    &__subtitle {
+      margin: .8rem auto;
+
+      color: var(--black);
+      font: 300 1.125rem / 1.2 "Montserrat", sans-serif;
 
       strong {
         font-weight: 600;
@@ -187,6 +207,10 @@
           transform: translate(25vw, -50%);
           background: transparent url("../assets/images/item.svg") center / 100%  no-repeat;
         }
+      }
+
+      &__subtitle {
+        font: 300 1.5rem / 1.2 "Montserrat", sans-serif;
       }
     }
   }
