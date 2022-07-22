@@ -8,7 +8,7 @@
       </a>
 
       <h1 class="header__herotext text-center">
-        O <strong>maior e melhor</strong> salão da cidade, agora na Zona Norte!
+        Vem aí, o Trois Beauté, o <strong>maior e melhor</strong> salão da cidade, agora na Zona Norte!
       </h1>
 
       <h2 class="header__subtitle text-center">

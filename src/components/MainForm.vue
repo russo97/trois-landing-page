@@ -5,11 +5,18 @@
       <div class="mainform__form w-100 mx-auto">
         <form @submit.prevent="submitForm" id="formLeadGenerator" ref="form">
           <h3 class="mainform__title text-center">
-            Faça seu cadastro gratuito
+            Faça seu cadastro
           </h3>
 
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nome" placeholder="Insira seu nome" v-model="user.name" required />
+            <input
+                required
+                id="nome"
+                type="text"
+                v-model="user.name"
+                class="form-control"
+                placeholder="Insira seu nome"
+            />
 
             <label for="nome">
               Nome
@@ -17,7 +24,14 @@
           </div>
 
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="email" placeholder="name@example.com" v-model="user.email" required />
+            <input
+                required
+                id="email"
+                type="email"
+                class="form-control"
+                v-model="user.email"
+                placeholder="name@example.com"
+            />
 
             <label for="email">
               E-mail
@@ -25,7 +39,16 @@
           </div>
 
           <div class="form-floating mb-3">
-            <input type="tel" inputmode="numeric" class="form-control" id="phone" placeholder="00 0000 0000" v-mask="'(##) ##### ####'" v-model="user.phone" required />
+            <input
+                required
+                type="tel"
+                id="phone"
+                inputmode="numeric"
+                class="form-control"
+                v-model="user.phone"
+                placeholder="00 0000 0000"
+                v-mask="'(##) ##### ####'"
+            />
 
             <label for="phone">
               Celular
@@ -33,7 +56,11 @@
           </div>
 
           <div class="d-flex justify-content-center">
-            <button type="submit" id="queroMinhaVaga" class="d-flex align-items-center justify-content-center">
+            <button
+                type="submit"
+                id="queroMinhaVaga"
+                class="d-flex align-items-center justify-content-center"
+            >
               {{ buttonText }}
             </button>
           </div>
@@ -68,7 +95,7 @@
 
     computed: {
       buttonText () {
-        return this.success ? "ENVIADO" : "Quero garantir a minha vaga";
+        return this.success ? "ENVIADO" : "QUERO ME TORNAR VIP";
       }
     },
 
@@ -76,10 +103,10 @@
       submitForm () {
         this.isLoading = true;
 
-        const { nome, email, phone } = this.user;
+        const { name, email, phone } = this.user;
 
         const formData = {
-          nome,
+          name,
           email,
           telefone: phone,
           page_url: location.href,
