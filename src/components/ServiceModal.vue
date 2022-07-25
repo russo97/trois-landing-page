@@ -122,11 +122,7 @@
       },
 
       getMoreInformation () {
-        const { currentService } = this;
-
-        const encodedService = encodeURI(currentService.serviceName);
-
-        return `https://api.whatsapp.com/send?phone=5581994310804&text=Ol%C3%A1%2C%20desejo%20informa%C3%A7%C3%B5es%20sobre%20${encodedService}`;
+        return `https://api.whatsapp.com/send?phone=5581994310804&text=Ol%C3%A1%2C%20desejo%20informa%C3%A7%C3%B5es%20sobre%20${encodeURI(this.currentService.serviceName)}`;
       }
     },
 

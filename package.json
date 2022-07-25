@@ -10,9 +10,10 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "jquery": "^3.6.0",
+    "swiper": "^6.8.4",
+    "swiper-vue2": "^1.0.9",
     "v-mask": "^2.3.0",
-    "vue": "^2.6.11",
-    "vue-slick-carousel": "^1.0.6"
+    "vue": "^2.6.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.15",

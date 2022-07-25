@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div
+      :class="dynamicClass"
       @click="setSelectedService(null)"
-      :class="{ 'visible': typeof selectedService === 'number' }"
       id="overlay"
       class="position-fixed top-0 start-0 overflow-hidden" />
 
@@ -45,7 +45,13 @@
     computed: {
       ...mapState([
         'selectedService'
-      ])
+      ]),
+
+      dynamicClass () {
+        return {
+          'visible': typeof this.selectedService === 'number'
+        }
+      }
     },
 
     methods: {
@@ -57,8 +63,6 @@
 </script>
 
 <style lang="scss">
-  @import "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css";
-
   * {
     margin: 0;
     padding: 0;

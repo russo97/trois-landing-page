@@ -18,13 +18,23 @@
       </h2>
 
       <div class="ourservices__slidelist">
-        <VueSlickCarousel v-bind="settings">
-          <SingleService
-            :index="index"
-            :service="service"
-            :key="service.serviceName"
-            v-for="(service, index) in ourServices" />
-        </VueSlickCarousel>
+        <Swiper
+            :freeModeSticky="true"
+            :freeModeEnabled="true"
+            :loop="false"
+            :space-between="15"
+            :simulateTouch="true"
+            slidesPerView="auto"
+            :navigation="true"
+        >
+          <SwiperSlide
+              :key="service.serviceName"
+              v-for="(service, index) in ourServices">
+            <SingleService
+              :index="index"
+              :service="service" />
+          </SwiperSlide>
+        </Swiper>
       </div>
     </div>
   </section>
@@ -33,19 +43,28 @@
 <script>
   import { mapState } from 'vuex';
 
-  import VueSlickCarousel from 'vue-slick-carousel';
-  import 'vue-slick-carousel/dist/vue-slick-carousel.css';
+  import { Swiper, SwiperSlide, SwiperCore } from 'swiper-vue2';
+
+  import { Navigation } from 'swiper';
 
   import SingleService from './SingleService';
 
   import $ from "jquery";
 
+  import 'swiper/swiper.scss';
+  import 'swiper/components/navigation/navigation.min.css'
+
+  SwiperCore.use([
+    Navigation
+  ]);
+
   export default {
     name: "OurServices",
 
     components: {
-      SingleService,
-      VueSlickCarousel
+      Swiper,
+      SwiperSlide,
+      SingleService
     },
 
     data () {
@@ -85,9 +104,12 @@
   .ourservices {
     overflow: hidden;
 
-    .slick-slide {
-      width: 214px;
-      padding: 0 7px;
+    .swiper-slide {
+      width: 214px !important;
+    }
+
+    [class*="swiper-button-"] {
+      color: #fff;
     }
 
     &__wrapper {
