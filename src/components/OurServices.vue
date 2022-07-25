@@ -51,7 +51,7 @@
 
   import $ from "jquery";
 
-  import 'swiper/swiper.scss';
+  import 'swiper/swiper.min.css';
   import 'swiper/components/navigation/navigation.min.css'
 
   SwiperCore.use([
